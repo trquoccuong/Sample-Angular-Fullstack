@@ -1,0 +1,30 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>{{ vm.course.name }}</h1>
+  </div>
+</header>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" ng-src="{{ vm.trustSrc(vm.course.youtubeID) }}"
+               frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-4">
+      <h4 >Like: {{ vm.course.numberOfLikes }}</h4>
+      <div>
+        <ul ng-repeat="user in vm.course.Users">
+          <li>{{ user.name }}</li>
+        </ul>
+      </div>
+      <button class="btn btn-success" ng-click="vm.like()" ng-show="vm.isLoggedIn() && !vm.course.isLiked">Like</button>
+      <h4>Description:</h4>
+      <pre>{{ vm.course.description }}</pre>
+      <paypal-button ng-show="vm.isLoggedIn()" url="vm.paypalUrl()" return="vm.onReturn(args)" cancel="vm.onCancel(args)"
+                       color="blue" size="medium" shape="rect"></paypal-button>
+      <a class="btn btn-success" ng-show="!vm.isLoggedIn()" ui-sref="login">Login to purchase</a>
+    </div>
+  </div>
+</div>
+
+

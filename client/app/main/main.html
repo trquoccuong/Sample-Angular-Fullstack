@@ -1,0 +1,26 @@
+<header class="hero-unit" id="banner">
+    <div class="container">
+        <h1>All Courses</h1>
+    </div>
+</header>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-3" ng-show="$ctrl.isAdmin()">
+            <a class="thumbnail" ui-sref="create()">
+                <img src="assets/images/yeoman.png" >
+                <div class="caption text-center">
+                    <h3>Create new course</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-3" ng-repeat="course in $ctrl.courses">
+            <a class="thumbnail" ui-sref="show({_id: course._id})">
+                <img src="assets/images/yeoman.png" alt="{{ course.name }}">
+                <div class="caption text-center">
+                    <h3>{{ course.name }}</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
